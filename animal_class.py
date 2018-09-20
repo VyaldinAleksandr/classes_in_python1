@@ -1,35 +1,52 @@
-class Animal():
-    def  __init__(self, dog, cat, rooster):
-        self.dog = dog
-        self.cat = cat
-        self.rooster = rooster
+class Animal(object):
+
+
+    def __init__(self, tail, paw, wool):
+        self.tail = 1
+        self.paw = 4
+        self.wool = True
+
 
 class Dog(Animal):
-    def __init__(self,dog):
-        self.dog = dog
+
+    def __init__(self, tail, paw, wool):
+        Animal.__init__(self, tail, paw, wool)
+
+    def say_woof(self):
+        return 'Woof Woof'
+
 
 class Cat(Animal):
-    def __init__(self, cat, sphinxcat):
-        self.sphinxcat = sphinxcat
-        self.cat = cat
+
+    def __init__(self, tail, paw, wool):
+        Animal.__init__(self, tail, paw, wool)
+
+    def say_meow(self):
+        return 'Meow meow'
+
 
 class SphynxCat(Cat):
-    def __init__(self, sphinxcat):
-        self.sphinxcat = sphinxcat
+
+    def __init__(self, tail, paw, wool):
+        Cat.__init__(self, tail, paw, wool)
+        self.wool = False
+
+    def say_murr(self):
+        return 'murr-murr'
+
 
 class Rooster(Animal):
-    def __init__(self, rooster):
-        self.rooster = rooster
 
-    def my_sphinxcat(self):
-        return self.woolkitty("No wool")
+    def __init__(self, tail, paw, wool):
+        Animal.__init__(self, tail, paw, wool)
+        self.paw = 2
+        self.wool = False
 
-    def my_rooster(self):
-        return (self.petya_paw("He has 2 paws, not 4, and he has no wool"))
+    def say_Cocorico(self):
+        return "Cocorico"
 
-say_something = Animal(" Woof - woof", "Meow - meow", "Cocorico")
-say_something1 = SphynxCat("Murr-Murr")
-
-
-print (say_something.cat, say_something.dog, say_something.rooster)
-print (say_something1.sphinxcat)
+print(SphynxCat.say_meow(Cat))
+print(SphynxCat.say_murr(Cat))
+print(Cat.say_meow(Animal))
+print(Dog.say_woof(Animal))
+print(Rooster.say_Cocorico(Animal))
